@@ -5,7 +5,7 @@ const imagesArray = [
     "03.webp",
     "04.webp",
     "05.webp"
-]
+] 
 
 //Creiamo dinamicamente i div con le immagini del carosello
 let itemsContent = '';
@@ -40,16 +40,45 @@ const next = document.querySelector('.next');
 
 next.addEventListener('click', function(){
     //verifico l'elemento attivo (itemActive)
+    let lastItemActive = items[itemActive]
+    let lastCircleActive = circles[itemActive]
+
     //incremento il suo valore di 1
+    if (itemActive == items.length - 1){
+        itemActive = 0
+    } else {
+        itemActive = itemActive + 1
+    }
+    
     //aggiungere la class active al nuovo elemento dell'array items e la vado a rimuovere da quello precedente
+    let activeItem = items[itemActive]
+    let activeCircle = circles[itemActive]
+    activeItem.classList.add("active")
+    lastItemActive.classList.remove("active")
     //stessa cosa per i cerchi
+    activeCircle.classList.add("active")
+    lastCircleActive.classList.remove("active")
 });
 
 prev.addEventListener('click', function(){
-    //verifico l'elemento attivo (itemActive)
-    //decremento il suo valore di 1
+    let lastItemActive = items[itemActive]
+    let lastCircleActive = circles[itemActive]
+
+    //incremento il suo valore di 1
+    if (itemActive == 0){
+        itemActive = items.length - 1
+    } else {
+        itemActive = itemActive - 1
+    }
+    
     //aggiungere la class active al nuovo elemento dell'array items e la vado a rimuovere da quello precedente
+    let activeItem = items[itemActive]
+    let activeCircle = circles[itemActive]
+    activeItem.classList.add("active")
+    lastItemActive.classList.remove("active")
     //stessa cosa per i cerchi
+    activeCircle.classList.add("active")
+    lastCircleActive.classList.remove("active")
 })
 
 
